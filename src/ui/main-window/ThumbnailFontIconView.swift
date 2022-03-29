@@ -15,12 +15,12 @@ enum Symbols: String {
 }
 
 class FontIcon: BaseLabel {
-    convenience init(_ symbol: Symbols, _ color: NSColor = .white) {
+    convenience init(_ symbol: Symbols, _ color: NSColor = .label) {
         self.init(symbol.rawValue)
         font = NSFont(name: "SF Pro Text", size: Preferences.fontHeight)!
         textColor = color
         alignment = .center
-        shadow = ThumbnailView.makeShadow(.darkGray)
+        //shadow = ThumbnailView.makeShadow(.darkGray)
     }
 }
 
