@@ -67,7 +67,7 @@ class Preferences {
     // constant values
     // not exposed as preferences now but may be in the future, probably through macro preferences
     static var windowMaterial: NSVisualEffectView.Material { .popover }
-    static var fontColor: NSColor { .label }
+    static var fontColor: NSColor { .labelColor }
     static var windowPadding: CGFloat { 18 }
     static var interCellPadding: CGFloat { 5 }
     static var intraCellPadding: CGFloat { 5 }
@@ -209,12 +209,12 @@ class Preferences {
     @available(OSX, deprecated: 10.11)
     private static func migrateLoginItem() {
         do {
-            let loginItems = LSSharedFileListCreate(nil, kLSSharedFileListSessionLoginItems.takeRetainedValue(), nil).takeRetainedValue()
-            let loginItemsSnapshot = LSSharedFileListCopySnapshot(loginItems, nil).takeRetainedValue() as! [LSSharedFileListItem]
+            let loginItems = LSSharedFileListCreate(nil, kLSSharedFileListSessionLoginItems.takeRetainedValue(), nil)!.takeRetainedValue()
+            let loginItemsSnapshot = LSSharedFileListCopySnapshot(loginItems, nil)!.takeRetainedValue() as! [LSSharedFileListItem]
             let itemName = Bundle.main.bundleURL.lastPathComponent as CFString
             let itemUrl = URL(fileURLWithPath: Bundle.main.bundlePath) as CFURL
             loginItemsSnapshot.forEach {
-                if (LSSharedFileListItemCopyDisplayName($0)?.takeRetainedValue() == itemName) ||
+                if (LSSharedFileListItemCopyDisplayName($0).takeRetainedValue() == itemName) ||
                        (LSSharedFileListItemCopyResolvedURL($0, 0, nil)?.takeRetainedValue() == itemUrl) {
                     LSSharedFileListItemRemove(loginItems, $0)
                 }
@@ -469,7 +469,7 @@ enum ThemePreference: String, CaseIterable, MacroPreference {
 
     var themeParameters: ThemeParameters {
         switch self {
-            case .macOs: return ThemeParameters(label: localizedString, cellBorderWidth: 0, cellCornerRadius: 10, windowCornerRadius: 23, highlightBorderColor: .clear, highlightBackgroundColor: NSColor(red: 0, green: 0, blue: 0, alpha: 0.4))
+            case .macOs: return ThemeParameters(label: localizedString, cellBorderWidth: 0, cellCornerRadius: 10, windowCornerRadius: 23, highlightBorderColor: .clear, highlightBackgroundColor: NSColor(red: 0, green: 0, blue: 0, alpha: 0.2))
             case .windows10: return ThemeParameters(label: localizedString, cellBorderWidth: 2, cellCornerRadius: 0, windowCornerRadius: 0, highlightBorderColor: .white, highlightBackgroundColor: .clear)
         }
     }

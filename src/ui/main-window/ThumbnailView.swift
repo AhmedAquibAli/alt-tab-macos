@@ -9,7 +9,7 @@ class ThumbnailView: NSStackView {
     var minimizedIcon = ThumbnailFontIconView(.circledMinusSign)
     var hiddenIcon = ThumbnailFontIconView(.circledSlashSign)
     var spaceIcon = ThumbnailFontIconView(.circledNumber0)
-    var dockLabelIcon = ThumbnailFilledFontIconView(ThumbnailFontIconView(.filledCircledNumber0, 14, NSColor(srgbRed: 1, green: 0.30, blue: 0.25, alpha: 1), nil), NSColor.white)
+    var dockLabelIcon = ThumbnailFilledFontIconView(ThumbnailFontIconView(.filledCircledNumber0, 14, NSColor(srgbRed: 1, green: 0.30, blue: 0.25, alpha: 1)), NSColor.white)
     var closeIcon = WindowControlView("close", 16)
     var minimizeIcon = WindowControlView("minimize", 16)
     var maximizeIcon = WindowControlView("fullscreen", 16)
@@ -42,9 +42,9 @@ class ThumbnailView: NSStackView {
         layer!.borderWidth = Preferences.cellBorderWidth
         edgeInsets = NSEdgeInsets(top: Preferences.intraCellPadding, left: Preferences.intraCellPadding, bottom: Preferences.intraCellPadding, right: Preferences.intraCellPadding)
         orientation = .vertical
-        let shadow = ThumbnailView.makeShadow(.gray)
-        thumbnail.shadow = shadow
-        appIcon.shadow = shadow
+        //let shadow = ThumbnailView.makeShadow(.gray)
+        //thumbnail.shadow = shadow
+        //appIcon.shadow = shadow
         hStackView = NSStackView(views: [appIcon, label, hiddenIcon, fullscreenIcon, minimizedIcon, spaceIcon])
         setViews([hStackView, thumbnail], in: .leading)
         addWindowControls()

@@ -1,8 +1,8 @@
 import Cocoa
 
 class ThumbnailTitleView: BaseLabel {
-    convenience init(_ size: CGFloat, _ shadow: NSShadow? = ThumbnailView.makeShadow(.darkGray)) {
-        let textStorage = NSTextStorage()
+    convenience init(_ size: CGFloat)//, _ shadow: NSShadow? = ThumbnailView.makeShadow(.darkGray)) {
+        {let textStorage = NSTextStorage()
         let layoutManager = NSLayoutManager()
         textStorage.addLayoutManager(layoutManager)
         let textContainer = NSTextContainer()
@@ -12,7 +12,7 @@ class ThumbnailTitleView: BaseLabel {
         self.init(NSRect.zero, textContainer)
         font = Preferences.font
         textColor = Preferences.fontColor
-        self.shadow = shadow
+        //self.shadow = shadow
         defaultParagraphStyle = makeParagraphStyle(size)
         heightAnchor.constraint(equalToConstant: size).isActive = true
     }
