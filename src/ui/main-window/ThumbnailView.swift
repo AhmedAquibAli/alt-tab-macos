@@ -42,8 +42,8 @@ class ThumbnailView: NSStackView {
         layer!.borderWidth = Preferences.cellBorderWidth
         edgeInsets = NSEdgeInsets(top: Preferences.intraCellPadding, left: Preferences.intraCellPadding, bottom: Preferences.intraCellPadding, right: Preferences.intraCellPadding)
         orientation = .vertical
-        //let shadow = ThumbnailView.makeShadow(.gray)
-        //thumbnail.shadow = shadow
+        let shadow = ThumbnailView.makeShadow(.gray)
+        thumbnail.shadow = shadow
         //appIcon.shadow = shadow
         hStackView = NSStackView(views: [appIcon, label, hiddenIcon, fullscreenIcon, minimizedIcon, spaceIcon])
         setViews([hStackView, thumbnail], in: .leading)
