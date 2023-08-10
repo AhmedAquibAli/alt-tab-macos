@@ -1,4 +1,4 @@
-import Cocoa
+    import Cocoa
 import Darwin
 import LetsMove
 import ShortcutRecorder
